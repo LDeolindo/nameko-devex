@@ -66,3 +66,22 @@ def _create_order(order_data, nameko_rpc):
             order_data['order_details']
         )
         return result['id']
+
+@router.get("", status_code=status.HTTP_200_OK)
+def list_orders(rpc = Depends(get_rpc)):
+    try:
+        return _get_all_orders(rpc)
+    except OrderNotFound as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(error)
+        )
+
+def _get_all_orders(nameko_rpc):
+    with nameko_rpc.next() as nameko:
+        orders = nameko.orders.list_order()
+
+    list_orders = [_get_order(order["id"], nameko_rpc) for order in orders]
+    
+    return list_orders
+    

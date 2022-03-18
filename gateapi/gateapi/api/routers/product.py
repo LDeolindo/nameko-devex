@@ -27,3 +27,18 @@ def create_product(request: schemas.Product, rpc = Depends(get_rpc)):
         return {
             "id": request.id
         }
+
+@router.delete("/{product_id}", status_code=status.HTTP_200_OK)
+def delete_product(product_id: str, rpc = Depends(get_rpc)):
+    try: 
+        with rpc.next() as nameko:
+            nameko.products.delete(product_id)
+            return {
+                "ok": True,
+                "msg": f"Product with ID {product_id} deleted! :("
+            }
+    except ProductNotFound as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(error)
+        )
