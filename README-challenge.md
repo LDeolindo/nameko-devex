@@ -31,7 +31,7 @@ Technical challenge performed for the Ília's selection process.
 
     *   Question 2: How do you fix it?
 
-    `R: To fix this is necessary increase the number of threads, reducing the number of users by concurrency. When making some tests was found that the number of threads needed can be 300, 500 or 700, but searching the documentation they say to "Make sure you don't go over 75% CPU or 85% memory usage throughout the test", so whats make more sense é using 300.`
+    `R: To fix this is necessary increase the number of threads, reducing the number of users by concurrency. When making some tests was found that the number of threads needed can be 300, 500 or 700, but searching the documentation they say to "Make sure you don't go over 75% CPU or 85% memory usage throughout the test", so whats make more sense is using 300.`
     
     *   (bonus): Fix it
 
