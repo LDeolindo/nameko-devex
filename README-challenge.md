@@ -26,10 +26,13 @@ Technical challenge performed for the Ília's selection process.
 ## Challenge - Redone:
 - Execute performance test:
     *   Question 1: Why is performance degrading as the test run longer?
+
     `R: The test performance is degrading with time because the number of threads (concurrency: 1) is lower compared with number of users (3), whats make high the levels of CPU and Memory when you increase the time.`
 
     *   Question 2: How do you fix it?
+
     `R: To fix this is necessary increase the number of threads, reducing the number of users by concurrency. When making some tests was found that the number of threads needed can be 300, 500 or 700, but searching the documentation they say to "Make sure you don't go over 75% CPU or 85% memory usage throughout the test", so whats make more sense é using 300.`
     
     *   (bonus): Fix it
+
     [Fixed!](https://github.com/LDeolindo/nameko-devex/blob/master/test/nex-bzt.yml);
